@@ -1,0 +1,17 @@
+﻿<Window x:Class="ProyectoEntregar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoEntregar"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel Background="Aquamarine">
+        <StackPanel x:Name="barraSuperior"  Background="Aqua" Orientation="Horizontal">
+            <Button Content="Habitación Principal" x:Name="bt_habP" />
+            <Button Content="Baño" x:Name="banio"/>
+            <Button Content="+" Click="botonMas_Click"/>
+        </StackPanel>
+        <StackPanel x:Name="panelPrincipal"/>
+    </StackPanel>
+</Window>
