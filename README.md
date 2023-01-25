@@ -4,4 +4,6 @@ una casa domotica
 # Profe:
 Una buena descripción, deberías añadir un poco más de detalle en como lo desarrollarás.
 Además de indicar del uso de C# y su desarrollo de interfaz con XAML.
-
+# Autor:
+Este es mi enlace desde GitHub a odoo
+adrichxng.odoo.com
