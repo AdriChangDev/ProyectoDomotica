@@ -6,12 +6,8 @@
         xmlns:local="clr-namespace:ProyectoEntregar"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel Background="Aquamarine">
-        <StackPanel x:Name="barraSuperior"  Background="Aqua" Orientation="Horizontal">
-            <Button Content="Habitación Principal" x:Name="bt_habP" />
-            <Button Content="Baño" x:Name="banio"/>
-            <Button Content="+" Click="botonMas_Click"/>
-        </StackPanel>
-        <StackPanel x:Name="panelPrincipal"/>
-    </StackPanel>
+    <TabControl Background="Aquamarine" SelectionChanged="TabControl_SelectionChanged">
+        <TabItem Margin="-2,-2,-15,-17" Header="Habitacion Principal"></TabItem>
+        <TabItem Margin="15,-2,-49,-17" Header="Baño"/>
+    </TabControl>
 </Window>

@@ -95,6 +95,11 @@ namespace ProyectoEntregar
         {
             return cuartos.Contains(nueva.seleccionado);
         }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
     
