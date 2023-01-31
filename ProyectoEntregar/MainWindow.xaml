@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <TabControl Background="Aquamarine" SelectionChanged="TabControl_SelectionChanged">
-        <TabItem Margin="-2,-2,-15,-17" Header="Habitacion Principal"></TabItem>
-        <TabItem Margin="15,-2,-49,-17" Header="Baño"/>
-        
+        <TabItem Margin="-2,-2,-16,2" Header="Habitacion Principal" FontFamily="Bernard MT Condensed" FontSize="22"/>
+        <TabItem Margin="15,-2,-47,0" Header="Baño" FontFamily="Bernard MT Condensed" FontSize="22"/>
+        <TabItem Margin="47,-2,-67,0" Header="+"  Height="32" VerticalAlignment="Top" FontFamily="Bernard MT Condensed" FontSize="24">
+            <Grid>
+                <Button Margin="278,134,278,197" Content="Agregar Habitacion" Click="Button_Click"></Button>
+            </Grid>
+        </TabItem>
     </TabControl>
 </Window>
