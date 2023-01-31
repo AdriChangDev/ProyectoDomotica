@@ -9,5 +9,6 @@
     <TabControl Background="Aquamarine" SelectionChanged="TabControl_SelectionChanged">
         <TabItem Margin="-2,-2,-15,-17" Header="Habitacion Principal"></TabItem>
         <TabItem Margin="15,-2,-49,-17" Header="Baño"/>
+        
     </TabControl>
 </Window>
