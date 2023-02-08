@@ -24,6 +24,7 @@ namespace ProyectoEntregar
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int contador = 1;
         private Button cocina = new Button { Content = "Cocina" };
         private Button salon = new Button { Content = "Salon" };
 
@@ -34,27 +35,23 @@ namespace ProyectoEntregar
         public MainWindow()
         {
             InitializeComponent();
-            initialize();
-        }
-
-        private void initialize()
-        {
-        }
-
-        
-
-        
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
            
         }
 
+
+        private void TabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            string nombre = Microsoft.VisualBasic.Interaction.InputBox("Introduce el nombre de la habitación:", "Nombre de la habitación", "", -1, -1);
+            contador = TControl.Items.Count;
+            TabItem ti = new TabItem { Header =nombre  };
+            ti.FontSize = 22;
+            ti.IsSelected = true;
+            ti.FontFamily = new FontFamily("Bernard MT Condensed");
+            TControl.Items.Insert(contador-1, ti);
+            contador++;
+            
+
+        }
     }
 }
     
