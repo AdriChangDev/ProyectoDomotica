@@ -10,3 +10,5 @@ copia del inicial ReadMe:
 Una buena descripción, deberías añadir un poco más de detalle en como lo desarrollarás.
 Además de indicar del uso de C# y su desarrollo de interfaz con XAML.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+08/02/2023
+He hecho un avance en el Control del TabItem, siendo capaz de introducir el nombre de la habitacion
