@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoEntregar"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Visibility="Hidden">
     <TabControl  x:Name="TControl" Background="Aquamarine" >
         <TabItem Header="Habitacion Principal" FontFamily="Bernard MT Condensed" FontSize="22"/>
         <TabItem Header="Baño" FontFamily="Bernard MT Condensed" FontSize="22"/>

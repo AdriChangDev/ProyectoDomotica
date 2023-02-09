@@ -7,18 +7,21 @@
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
     <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Administrador\source\ProyectoDomotica\ProyectoEntregar\img\casaFondo.jpg"/>
+        </Grid.Background>
         <StackPanel Orientation="Horizontal">
             <Label Content="A" VerticalAlignment="Center"/>
-            <Label Content="Título"  VerticalAlignment="Center"/>
+            <Label Content="CasaTech"  VerticalAlignment="Top" FontSize="152" FontFamily="Stencil"/>
         </StackPanel>
-        <StackPanel Width="287" Margin="513,232,0,0" Height="192" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <Button Content="Iniciar sesión" Margin="10px" Width="250"  Height="45" FontFamily="Pristina"
-                    FontSize="35px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <StackPanel Width="287"  Height="192" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button Content="Iniciar sesión" Margin="10px" Width="250"  Height="45" Background="White"
+                    FontSize="25px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
 
-            <Button Content="Configuración"  Margin="10px" Width="250" Height="45"/>
-            <Button Content="Salir"  Margin="10px" Width="250" Height="45"/>
+            <Button Content="Configuración"  Margin="10px" Width="250" Height="45" Background="White" FontSize="25px"/>
+            <Button Content="Salir"  Margin="10px" Width="250" Height="45" FontSize="25px" Background="White"/>
 
 
 
