@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace ProyectoEntregar
 {
     /// <summary>
@@ -23,5 +22,15 @@ namespace ProyectoEntregar
         {
             InitializeComponent();
         }
+
+        private void EnviarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine($"Nombre: {user.Text}");
+            Console.WriteLine($"Usuario: {password.Text}");
+        }
     }
 }
+
+
+
+

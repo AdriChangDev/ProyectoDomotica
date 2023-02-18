@@ -1,27 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProyectoEntregar
 {
-    /// <summary>
-    /// Lógica de interacción para Window1.xaml
-    /// </summary>
     public partial class Window1 : Window
     {
         public Window1()
         {
             InitializeComponent();
+        }
+
+        private void IniciarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            login login = new login();
+            login.Show();
+            string usuario = "usuario1";
+            string contrasena = "contrasena1";
+            Console.WriteLine($"Usuario: {usuario}, Contraseña: {contrasena}");
+        }
+
+        private void Configuracion_Click(object sender, RoutedEventArgs e)
+        {
+            Configuracion configuracion = new Configuracion();
+            configuracion.Show();
+            Console.WriteLine("Configuración");
+        }
+
+        private void Salir_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Saliendo...");
+            Application.Current.Shutdown();
         }
     }
 }
