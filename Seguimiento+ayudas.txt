@@ -16,3 +16,5 @@ He hecho un avance en el Control del TabItem, siendo capaz de introducir el nomb
 09/02/2023
 Hacerlo Público.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+18/02/2023
+Le he dado formato a la parte de Inicio y he hecho que no te puedan valores vacios o nulos para los nombres de las habitaciones
