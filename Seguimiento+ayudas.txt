@@ -21,3 +21,6 @@ Le he dado formato a la parte de Inicio y he hecho que no te puedan valores vaci
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 18/02/2023 3:53
 He creado la pagina de login para despues comprobar con la base de datos si existe el ususario y cargar todo
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+18/02/2023 16:12
+He dado formato la pagina de login y he creado la pagina de configuracion ambas dos todavia no tiene funcionalidad
