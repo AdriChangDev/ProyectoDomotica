@@ -18,3 +18,6 @@ Hacerlo Público.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 18/02/2023
 Le he dado formato a la parte de Inicio y he hecho que no te puedan valores vacios o nulos para los nombres de las habitaciones
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+18/02/2023 3:53
+He creado la pagina de login para despues comprobar con la base de datos si existe el ususario y cargar todo
