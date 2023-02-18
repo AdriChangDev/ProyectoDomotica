@@ -5,26 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoEntregar"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
-    <Grid >
-        <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Administrador\source\ProyectoDomotica\ProyectoEntregar\img\casaFondo.jpg"/>
-        </Grid.Background>
-        <StackPanel Orientation="Horizontal">
-            <Label Content="A" VerticalAlignment="Center"/>
-            <Label Content="CasaTech"  VerticalAlignment="Top" FontSize="152" FontFamily="Stencil"/>
+        Title="CasaTech" Height="450" Width="800"
+        >
+
+    <Grid Background="#F4F4F4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Label Content=" " FontSize="32" FontWeight="Bold" Foreground="#0080FF" Margin="0,0,5,0" />
+            <Label Content="CasaTech" FontSize="52" FontFamily="Stencil" Foreground="#0080FF" VerticalAlignment="Center"/>
         </StackPanel>
-        <StackPanel Width="287"  Height="192" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-            <Button Content="Iniciar sesión" Margin="10px" Width="250"  Height="45" Background="White"
-                    FontSize="25px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
-
-
-            <Button Content="Configuración"  Margin="10px" Width="250" Height="45" Background="White" FontSize="25px"/>
-            <Button Content="Salir"  Margin="10px" Width="250" Height="45" FontSize="25px" Background="White"/>
-
-
-
+        <StackPanel Grid.Row="1" Width="320" Height="240" Margin="30" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button Content="Iniciar sesión" Width="250" Height="45" Background="#0080FF" Foreground="White"
+                    FontSize="20px" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0 20 0 0"/>
+            <Button Content="Configuración" Width="250" Height="45" Background="White" FontSize="20px" FontWeight="Bold"
+                    Foreground="#0080FF" Margin="0 10"/>
+            <Button Content="Salir" Width="250" Height="45" FontSize="20px" FontWeight="Bold" Background="#FF4D4D" Foreground="White"/>
         </StackPanel>
     </Grid>
 </Window>

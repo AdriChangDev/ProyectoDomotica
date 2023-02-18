@@ -25,11 +25,7 @@ namespace ProyectoEntregar
     public partial class MainWindow : Window
     {
         private int contador = 1;
-        private Button cocina = new Button { Content = "Cocina" };
-        private Button salon = new Button { Content = "Salon" };
-
-        private List<string> cuartos = new List<string>();
-        private List<Button> botones = new List<Button>();
+     
 
 
         public MainWindow()
@@ -44,15 +40,22 @@ namespace ProyectoEntregar
         private void TabItem_GotFocus(object sender, RoutedEventArgs e)
         {
             string nombre = Microsoft.VisualBasic.Interaction.InputBox("Introduce el nombre de la habitación:", "Nombre de la habitación", "", -1, -1);
-            contador = TControl.Items.Count;
-            TabItem ti = new TabItem { Header =nombre  };
-            ti.FontSize = 22;
-            ti.IsSelected = true;
-            ti.FontFamily = new FontFamily("Bernard MT Condensed");
-            TControl.Items.Insert(contador-1, ti);
-            contador++;
-            
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                System.Windows.MessageBox.Show("El nombre de la habitación no puede estar vacío.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else
+            {
 
+                contador = TControl.Items.Count;
+                TabItem ti = new TabItem { Header = nombre };
+                ti.FontSize = 22;
+                ti.IsSelected = true;
+                ti.FontFamily = new FontFamily("Bernard MT Condensed");
+                TControl.Items.Insert(contador - 1, ti);
+                contador++;
+            }
         }
     }
 }
