@@ -27,3 +27,6 @@ He dado formato la pagina de login y he creado la pagina de configuracion ambas 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 20/02/2023 23:52
 He creado un registrar para poder añadir a la base de datos y tener usuarios a los que acceder,todavia no tiene funcionalidad se la doy ahora
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+21/02/2023 0:33
+Acabo de acceder a la base de datos para ver si existe el usuario si existe tiro la aplicacion
