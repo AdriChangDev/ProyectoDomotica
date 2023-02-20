@@ -31,5 +31,11 @@ namespace ProyectoEntregar
             Console.WriteLine("Saliendo...");
             Application.Current.Shutdown();
         }
+        private void Registrarse_Click(object sender, RoutedEventArgs e)
+        {
+            register registrar=new register();
+            registrar.Show();
+            
+        }
     }
 }

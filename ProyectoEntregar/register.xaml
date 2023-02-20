@@ -1,0 +1,29 @@
+﻿<Window x:Class="ProyectoEntregar.register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Registro" Height="350" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label x:Name="Titulo" Content="Registro" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,20" />
+
+        <Label x:Name="LblUsuario" Grid.Row="1" Content="Nombre de usuario" HorizontalAlignment="Left" Margin="30,0,0,0" />
+        <TextBox x:Name="TxtUsuario" Grid.Row="1" Width="250" HorizontalAlignment="Right" Margin="0,0,30,0" />
+
+        <Label x:Name="LblContrasenia" Grid.Row="3" Content="Contraseña" HorizontalAlignment="Left" Margin="30,0,0,0" />
+        <PasswordBox x:Name="PwbContrasenia" Grid.Row="3" Width="250" HorizontalAlignment="Right" Margin="0,0,30,0" />
+
+        <Label x:Name="LblConfirmacion" Grid.Row="4" Content="Confirmar contraseña" HorizontalAlignment="Left" Margin="30,0,0,0" />
+        <PasswordBox x:Name="PwbConfirmacion" Grid.Row="4" Width="250" HorizontalAlignment="Right" Margin="0,0,30,0" />
+
+        <Button x:Name="BtnRegistro" Grid.Row="5" Content="Registrarse" Width="150" Height="30" Margin="30,20,0,0" Click="BtnRegistro_Click"  />
+    </Grid>
+</Window>
