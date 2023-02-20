@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ProyectoEntregar
 {
-    public partial class Window1 : Window
+    public partial class Window1 : Page
     {
         public Window1()
         {

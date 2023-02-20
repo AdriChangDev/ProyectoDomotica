@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SQLite;
 namespace ProyectoEntregar
 {
     /// <summary>
@@ -25,9 +26,29 @@ namespace ProyectoEntregar
 
         private void EnviarButton_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine($"Nombre: {user.Text}");
-            Console.WriteLine($"Usuario: {password.Text}");
+            string usuario = user.Text;
+            string contrasenia = password.Password;
+            Console.WriteLine("hola");
+            using (  var db = new SQLiteConnection("database.db3"))
+            {
+                var query = $"SELECT * FROM user WHERE user='{usuario}' AND password='{contrasenia}'";
+                var result = db.Query<dbInfo>(query);
+
+                if (result.Count > 0)
+                {
+                    // Si se encontró un registro con las credenciales ingresadas, mostrar mensaje de login correcto
+                    MessageBox.Show("¡Login correcto!");
+                    MainWindow  main= new MainWindow();
+                    main.Show();
+                }
+                else
+                {
+                    // Si no se encontró ningún registro, mostrar mensaje de error
+                    MessageBox.Show("¡Error de login! Verifica tus credenciales e intenta nuevamente.");
+                }
+            }
         }
+
     }
 }
 

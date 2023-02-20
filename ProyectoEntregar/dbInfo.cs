@@ -9,14 +9,14 @@ namespace ProyectoEntregar
 {
      class dbInfo
     {
-        [PrimaryKey,AutoIncrement]
-        public int Id { get; set; }
+        [PrimaryKey]
         public string User { get; set; }
         public string password { get; set; }
-        dbInfo( string user, string password)
+        public  dbInfo(string user, string password)
         {
             User = user;
             this.password = password;
         }
+        public dbInfo() { }
     }
 }

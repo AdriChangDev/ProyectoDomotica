@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using SQLite;
 
 namespace ProyectoEntregar
 {
@@ -11,6 +12,13 @@ namespace ProyectoEntregar
 
         private void BtnRegistro_Click(object sender, RoutedEventArgs e)
         {
+            if (System.IO.File.Exists("database.db3")) { } 
+            else
+            {
+                var db = new SQLiteConnection("database.db3");
+                db.CreateTable<dbInfo>();
+                db.Close();
+            }
             string usuario = TxtUsuario.Text;
             string contrasenia = PwbContrasenia.Password;
             string confirmacion = PwbConfirmacion.Password;
@@ -20,12 +28,18 @@ namespace ProyectoEntregar
                 MessageBox.Show("Las contraseñas no coinciden.");
                 return;
             }
+            else
+            {
+                dbInfo dbInf=new dbInfo(usuario,contrasenia);
+                MessageBox.Show("Usuario registrado correctamente.");
+                var db = new SQLiteConnection("database.db3");
+                db.Insert(dbInf);
+                db.Close();
+                Close();
+            }
 
-            // Aquí iría el código para registrar al usuario en la base de datos o en algún archivo, etc.
-            // Por ejemplo:
-            // usuarioDAO.RegistrarUsuario(usuario, contrasenia);
+            
 
-            MessageBox.Show("Usuario registrado correctamente.");
         }
 
     }

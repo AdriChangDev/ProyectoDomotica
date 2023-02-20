@@ -31,8 +31,7 @@ namespace ProyectoEntregar
         public MainWindow()
         {
             InitializeComponent();
-            Window1 w = new Window1();
-            w.Show();
+            
            
         }
 
