@@ -9,18 +9,21 @@ consejos para solucionar fallos o mofificar características para la adecuación
 copia del inicial ReadMe:
 Una buena descripción, deberías añadir un poco más de detalle en como lo desarrollarás.
 Además de indicar del uso de C# y su desarrollo de interfaz con XAML.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 08/02/2023
 He hecho un avance en el Control del TabItem, siendo capaz de introducir el nombre de la habitacion
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 09/02/2023
 Hacerlo Público.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 18/02/2023
 Le he dado formato a la parte de Inicio y he hecho que no te puedan valores vacios o nulos para los nombres de las habitaciones
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 18/02/2023 3:53
 He creado la pagina de login para despues comprobar con la base de datos si existe el ususario y cargar todo
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 18/02/2023 16:12
 He dado formato la pagina de login y he creado la pagina de configuracion ambas dos todavia no tiene funcionalidad
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+20/02/2023 23:52
+He creado un registrar para poder añadir a la base de datos y tener usuarios a los que acceder,todavia no tiene funcionalidad se la doy ahora
