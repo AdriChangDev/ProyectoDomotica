@@ -38,7 +38,7 @@ namespace ProyectoEntregar
                 {
                     // Si se encontró un registro con las credenciales ingresadas, mostrar mensaje de login correcto
                     MessageBox.Show("¡Login correcto!");
-                    MainWindow  main= new MainWindow();
+                    MainWindow  main= new MainWindow(usuario);
                     main.Show();
                 }
                 else

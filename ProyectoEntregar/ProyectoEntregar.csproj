@@ -199,12 +199,16 @@
       <DependentUpon>Configuracion.xaml</DependentUpon>
     </Compile>
     <Compile Include="dbInfo.cs" />
+    <Compile Include="Dispositivo.cs" />
+    <Compile Include="habitaciones.cs" />
     <Compile Include="login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
     <Compile Include="register.xaml.cs">
       <DependentUpon>register.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Relaciones.cs" />
+    <Compile Include="user.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>

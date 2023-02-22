@@ -6,12 +6,20 @@
         xmlns:local="clr-namespace:ProyectoEntregar"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-       >
-    <TabControl  x:Name="TControl" Background="Aquamarine" >
-        <TabItem Header="Habitacion Principal" FontFamily="Bernard MT Condensed" FontSize="22"/>
-        <TabItem Header="Baño" FontFamily="Bernard MT Condensed" FontSize="22"/>
-        <TabItem x:Name="tabItem" Header="+"  Height="32" VerticalAlignment="Top" FontFamily="Bernard MT Condensed" FontSize="24"  GotFocus="TabItem_GotFocus"/>
-
-
-    </TabControl>
+        Background="#FFE6EEF4"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10">
+            <TextBlock Text="Conectado" Margin="0,0,5,0"/>
+            <TextBlock x:Name="usuarios" Text=""/>
+        </StackPanel>
+        <TabControl Grid.Row="1" x:Name="TControl" Background="#FFD6EAF8">
+           
+            <TabItem x:Name="tabItem" Header="+"  Height="32" VerticalAlignment="Top" FontFamily="Bernard MT Condensed" FontSize="24" Background="#FFBBD5ED" GotFocus="TabItem_GotFocus"/>
+        </TabControl>
+    </Grid>
 </Window>
