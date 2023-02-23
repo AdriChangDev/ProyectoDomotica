@@ -33,3 +33,6 @@ Acabo de acceder a la base de datos para ver si existe el usuario si existe tiro
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 22/02/2023
 He cambiado algunas clases para poder acceder a ellas a traves de bases de datos, y trabajar cn la informacion
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+23/02/2023
+He  cambiado el login para cuando haga log-in se esconda la pestaña dicha y  se queda la otra activada
