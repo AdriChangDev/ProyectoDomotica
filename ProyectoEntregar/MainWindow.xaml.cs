@@ -78,7 +78,7 @@ namespace ProyectoEntregar
             usuarios.FontWeight= FontWeights.Bold;
             using (var db = new SQLiteConnection("database.db3"))
             {
-                string query = "SELECT DISTINCT * FROM Relaciones WHERE User=@user";
+                string query = "SELECT DISTINCT * FROM Relaciones WHERE idUser=@user ";
                 var result = db.Query<Relaciones>(query,user);
                 foreach (var item in result)
                 {

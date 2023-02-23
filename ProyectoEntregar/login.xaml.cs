@@ -31,8 +31,8 @@ namespace ProyectoEntregar
             Console.WriteLine("hola");
             using (  var db = new SQLiteConnection("database.db3"))
             {
-                var query = $"SELECT * FROM user WHERE user='{usuario}' AND password='{contrasenia}'";
-                var result = db.Query<dbInfo>(query);
+                var query = $"SELECT * FROM user WHERE Usuario='{usuario}' AND password='{contrasenia}'";
+                var result = db.Query<User>(query);
 
                 if (result.Count > 0)
                 {
@@ -40,6 +40,7 @@ namespace ProyectoEntregar
                     MessageBox.Show("¡Login correcto!");
                     MainWindow  main= new MainWindow(usuario);
                     main.Show();
+                    this.Hide();
                 }
                 else
                 {

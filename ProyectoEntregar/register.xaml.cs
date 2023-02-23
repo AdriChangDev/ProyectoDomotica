@@ -16,7 +16,7 @@ namespace ProyectoEntregar
             else
             {
                 var db = new SQLiteConnection("database.db3");
-                db.CreateTable<dbInfo>();
+                db.CreateTable<User>();
                 db.Close();
             }
             string usuario = TxtUsuario.Text;
@@ -30,10 +30,10 @@ namespace ProyectoEntregar
             }
             else
             {
-                dbInfo dbInf=new dbInfo(usuario,contrasenia);
+                User user=new User(usuario,contrasenia);
                 MessageBox.Show("Usuario registrado correctamente.");
                 var db = new SQLiteConnection("database.db3");
-                db.Insert(dbInf);
+                db.Insert(user);
                 db.Close();
                 Close();
             }

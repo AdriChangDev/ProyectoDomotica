@@ -198,7 +198,6 @@
     <Compile Include="Configuracion.xaml.cs">
       <DependentUpon>Configuracion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="dbInfo.cs" />
     <Compile Include="Dispositivo.cs" />
     <Compile Include="habitaciones.cs" />
     <Compile Include="login.xaml.cs">
