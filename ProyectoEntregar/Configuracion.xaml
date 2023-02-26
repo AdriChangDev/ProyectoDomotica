@@ -8,6 +8,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
         </Grid.RowDefinitions>
 
         <ComboBox x:Name="themeComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Grid.Row="0">
@@ -20,8 +22,17 @@
             <ComboBoxItem Content="Times New Roman"/>
             <ComboBoxItem Content="Courier New"/>
         </ComboBox>
-       
-        <Button x:Name="applyButton" Content="Aplicar cambios" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Click="applyButton_Click" Grid.Row="3"/>
+
+        <ComboBox x:Name="StyleComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Grid.Row="2">
+            <ComboBoxItem Content="Normal"/>
+            <ComboBoxItem Content="Bold"/>
+            <ComboBoxItem Content="Italic"/>
+            <ComboBoxItem Content="Italic &amp;&amp; Bold"/>
+
+        </ComboBox>
+
+        <Button x:Name="applyButton" Content="Aplicar cambios" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Click="apply_Click" Grid.Row="3"/>
+        <Button x:Name="test" Content="Testear Cambios" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Click="test_Click" Grid.Row="3"/>
         <Label x:Name="previewLabel" Content="Texto de ejemplo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="200" BorderThickness="1" Margin="150,10,0,0"/>
     </Grid>
 </Window>

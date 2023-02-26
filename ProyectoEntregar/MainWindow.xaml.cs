@@ -50,6 +50,7 @@ namespace ProyectoEntregar
             System.Windows.Forms.ComboBox comboBox = new System.Windows.Forms.ComboBox();
             comboBox.Items.AddRange(habitaciones);
 
+
             System.Windows.Forms.DialogResult result = System.Windows.Forms.MessageBox.Show(comboBox, "Seleccione la habitación:", "Añadir habitación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == System.Windows.Forms.DialogResult.OK)
             {

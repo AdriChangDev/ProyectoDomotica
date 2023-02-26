@@ -199,7 +199,6 @@
       <DependentUpon>Configuracion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dispositivo.cs" />
-    <Compile Include="habitaciones.cs" />
     <Compile Include="login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
@@ -259,6 +258,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="database.db3" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
