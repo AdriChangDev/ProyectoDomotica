@@ -36,3 +36,6 @@ He cambiado algunas clases para poder acceder a ellas a traves de bases de datos
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 23/02/2023
 He  cambiado el login para cuando haga log-in se esconda la pestaña dicha y  se queda la otra activada
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+27/02/2023
+He creado el xml de la configuracion con los cvambios que tengo que hacer solo me queda leerlo y aplicarlo al trabajo
