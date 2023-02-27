@@ -38,9 +38,15 @@ namespace ProyectoEntregar
         {
             
             InitializeComponent();
-            user= usuario;
-            
-           
+            user = usuario;
+            ConfiguracionDatos.LeerXML();
+            ConfiguracionDatos.muestraDatos();
+            tabItem.FontFamily = new FontFamily(ConfiguracionDatos.Font);
+            tabItem.FontSize = ConfiguracionDatos.Size;
+            tabItem.FontStyle = ConfiguracionDatos.Style;
+            tabItem.FontWeight = ConfiguracionDatos.Weight;
+
+
         }
 
 
@@ -66,7 +72,10 @@ namespace ProyectoEntregar
                     TabItem ti = new TabItem { Header = nombre };
                     ti.FontSize = 22;
                     ti.IsSelected = true;
-                    ti.FontFamily = new FontFamily("Bernard MT Condensed");
+                    ti.FontFamily = new FontFamily(ConfiguracionDatos.Font);
+                    ti.FontSize = ConfiguracionDatos.Size;
+                    ti.FontStyle = ConfiguracionDatos.Style;
+                    ti.FontWeight=ConfiguracionDatos.Weight;
                     TControl.Items.Insert(contador - 1, ti);
                     contador++;
                 }

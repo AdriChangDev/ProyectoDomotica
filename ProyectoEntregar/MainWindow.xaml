@@ -19,7 +19,7 @@
         </StackPanel>
         <TabControl Grid.Row="1" x:Name="TControl" Background="#FFD6EAF8">
            
-            <TabItem x:Name="tabItem" Header="+"  Height="32" VerticalAlignment="Top" FontFamily="Bernard MT Condensed" FontSize="24" Background="#FFBBD5ED" GotFocus="TabItem_GotFocus"/>
+            <TabItem x:Name="tabItem" Header="+"  Height="32" VerticalAlignment="Top"  Background="#FFBBD5ED" GotFocus="TabItem_GotFocus"/>
         </TabControl>
     </Grid>
 </Window>

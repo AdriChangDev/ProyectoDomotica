@@ -58,12 +58,17 @@
         </Grid.RowDefinitions>
         <!-- Controles de inicio de sesión -->
         <StackPanel VerticalAlignment="Center" Margin="50" Background="White" Opacity="0.9" >
-            <Label Content="Usuario:" Foreground="#007ACC" FontWeight="Bold" />
-            <TextBox x:Name="user" />
-            <Label Content="Contraseña:" Foreground="#007ACC" FontWeight="Bold" Margin="0 10 0 0" />
-            <PasswordBox x:Name="password" />
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="290">
+                <Label HorizontalAlignment="Left" Content="Usuario:" Foreground="#007ACC" FontWeight="Bold" Padding="0 0 5 0"  Width="100"/>
+                <TextBox x:Name="user" Width="189" FontSize="11" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="290">
+                <Label  HorizontalAlignment="Left" Content="Contraseña:" Foreground="#007ACC" FontWeight="Bold" Padding="0 0 5 0" Width="100" />
+                <PasswordBox x:Name="password" Width="189" FontSize="11" />
+            </StackPanel>
             <Button Content="Iniciar sesión" Click="EnviarButton_Click" Margin="0 20 0 0"/>
         </StackPanel>
+
         <!-- Separador -->
         <Rectangle Fill="#007ACC" Grid.Row="1" Height="5"/>
     </Grid>

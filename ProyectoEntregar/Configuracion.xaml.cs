@@ -225,7 +225,8 @@ namespace ProyectoEntregar
 
                 // Cerrar el elemento raíz
                 writer.WriteEndElement();
-                MessageBox.Show("Mensaje de OK", "Título del cuadro de mensaje", MessageBoxButtons.OK);
+                this.Close();
+                MessageBox.Show("Configuracion Guardada", "Configuracion", MessageBoxButtons.OK);
 
                 // Cerrar el archivo XML
                 writer.WriteEndDocument();
