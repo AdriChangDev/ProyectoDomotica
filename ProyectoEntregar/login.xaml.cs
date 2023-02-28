@@ -45,8 +45,8 @@ namespace ProyectoEntregar
                     
                     MainWindow  main= new MainWindow(usuario);
                
-                    main.Show();
-                    this.Hide();
+                    main.ShowDialog();
+                    this.Close();
                 }
                 else
                 {

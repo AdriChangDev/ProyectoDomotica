@@ -13,14 +13,14 @@ namespace ProyectoEntregar
         private void IniciarSesion_Click(object sender, RoutedEventArgs e)
         {
             login login = new login();
-            login.Show();
+            login.ShowDialog();
 
         }
 
         private void Configuracion_Click(object sender, RoutedEventArgs e)
         {
             Configuracion configuracion = new Configuracion();
-            configuracion.Show();
+            configuracion.ShowDialog();
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)
@@ -31,7 +31,7 @@ namespace ProyectoEntregar
         private void Registrarse_Click(object sender, RoutedEventArgs e)
         {
             register registrar=new register();
-            registrar.Show();
+            registrar.ShowDialog();
             
         }
     }

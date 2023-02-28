@@ -28,7 +28,7 @@ namespace ProyectoEntregar
     public partial class MainWindow : Window
     {
         private string user;
-        string[] habitaciones = new string[] { "Habitacion Invitado", "Terraza", "Cocina", "Salon" };
+        private bool alertaMostrada = false;
 
         private int contador = 1;
      
@@ -40,11 +40,11 @@ namespace ProyectoEntregar
             InitializeComponent();
             user = usuario;
             ConfiguracionDatos.LeerXML();
-            ConfiguracionDatos.muestraDatos();
             tabItem.FontFamily = new FontFamily(ConfiguracionDatos.Font);
             tabItem.FontSize = ConfiguracionDatos.Size;
             tabItem.FontStyle = ConfiguracionDatos.Style;
             tabItem.FontWeight = ConfiguracionDatos.Weight;
+            
 
 
         }
@@ -52,90 +52,72 @@ namespace ProyectoEntregar
 
         private void TabItem_GotFocus(object sender, RoutedEventArgs e)
         {
-
-            System.Windows.Forms.ComboBox comboBox = new System.Windows.Forms.ComboBox();
-            comboBox.Items.AddRange(habitaciones);
-
-
-            System.Windows.Forms.DialogResult result = System.Windows.Forms.MessageBox.Show(comboBox, "Seleccione la habitación:", "Añadir habitación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                string nombre = comboBox.SelectedItem as string;
-                if (string.IsNullOrWhiteSpace(nombre))
+                if (!alertaMostrada)
                 {
-                    System.Windows.MessageBox.Show("Debe seleccionar una habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-                else
-                {
-                    contador = TControl.Items.Count;
-                    TabItem ti = new TabItem { Header = nombre };
-                    ti.FontSize = 22;
-                    ti.IsSelected = true;
-                    ti.FontFamily = new FontFamily(ConfiguracionDatos.Font);
-                    ti.FontSize = ConfiguracionDatos.Size;
-                    ti.FontStyle = ConfiguracionDatos.Style;
-                    ti.FontWeight=ConfiguracionDatos.Weight;
-                    TControl.Items.Insert(contador - 1, ti);
-                    contador++;
+                    Alerta alerta = new Alerta(user);
+                    if (alerta == null)
+                    {
+                        alerta.ShowDialog();
+                        this.Close();
+                    }
+                    alertaMostrada = true;
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
         }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             TextBlock usuarios = (TextBlock)FindName("usuarios");
             usuarios.Text = user;
+            ConfiguracionDatos.LeerXML();
             usuarios.FontWeight= FontWeights.Bold;
             using (var db = new SQLiteConnection("database.db3"))
             {
-                string query = "SELECT DISTINCT * FROM Relaciones WHERE idUser=@user ";
+                string query = "SELECT DISTINCT * FROM Relaciones where User=@user ";
+                string hab="A";
                 var result = db.Query<Relaciones>(query,user);
-                foreach (var item in result)
+                List<string> aux = new List<string>();
+               for (int i = 0; i < result.Count; i++)
+                {
+                    if (hab.ToUpper() != result[i].NombreHabitacion.ToUpper())
+                    {
+                        hab = result[i].NombreHabitacion;
+                        aux.Add(hab);
+                    }
+                } 
+
+
+
+
+                foreach (var item in aux)
                 {
                     contador = TControl.Items.Count;
-                    TabItem ti = new TabItem { Header = item.NombreHabitacion };
-                    ti.FontSize = 22;
+                    TabItem ti = new TabItem { Header = item };
+                    ti.FontSize =ConfiguracionDatos.Size ;
                     ti.IsSelected = true;
-                    ti.FontFamily = new FontFamily("Bernard MT Condensed");
+                    ti.FontFamily =new FontFamily(ConfiguracionDatos.Font);
+                    ti.FontStyle=ConfiguracionDatos.Style;
+                    ti.FontWeight= ConfiguracionDatos.Weight;
                     TControl.Items.Insert(contador - 1, ti);
                     contador++;
                     // Código para crear el TabItem
-/*
-                    // Crear el Grid
-                    Grid grid = new Grid();
-                    grid.ColumnDefinitions.Add(new ColumnDefinition());
-                    grid.ColumnDefinitions.Add(new ColumnDefinition());
+                    string nombreHabitacion = item;
 
-                    // Agregar los encabezados de las columnas
-                    Label nombreLabel = new Label() { Content = "Nombre del Dispositivo" };
-                    Grid.SetColumn(nombreLabel, 0);
-                    grid.Children.Add(nombreLabel);
+                    query = "SELECT * FROM Relaciones WHERE User = ? AND NombreHabitacion = ?";
+                    result = db.Query<Relaciones>(query, user, nombreHabitacion);
 
-                    // Obtener los dispositivos conectados
-                    using (var db2 = new SQLiteConnection("database.db3"))
+                    foreach (var so in result)
                     {
-                        string query2 = "SELECT NombreDispositivo FROM Dispositivos WHERE NombreHabitacion=@nombreHabitacion";
-                        var result2 = db.Query<string>(query, new { nombreHabitacion = nombre });
+                        Console.WriteLine(so.NombreHabitacion.ToString());
 
-                        int row = 1;
-                        foreach (var dispositivo in result)
-                        {
-                            // Agregar el nombre del dispositivo al Grid
-                           Label nombreDispositivoLabel = new Label() { Content = dispositivo };
-                            Grid.SetRow(nombreDispositivoLabel, row);
-                            Grid.SetColumn(nombreDispositivoLabel, 0);
-                            grid.Children.Add(nombreDispositivoLabel);
-
-                            row++;
-                        }
                     }
 
-                    // Agregar el Grid al contenido del TabItem
-                    ti.Content = grid;
-
-                    // Agregar el TabItem a la lista de TabItems
-                    TControl.Items.Insert(contador - 1, ti);
-                    contador++;*/
                 }
 
 
