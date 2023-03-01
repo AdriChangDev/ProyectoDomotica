@@ -49,6 +49,12 @@
     <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialDesignColors, Version=2.1.1.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.2.1.1\lib\net462\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=4.7.1.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.4.7.1\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MessagePack, Version=2.4.0.0, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
       <HintPath>..\packages\MessagePack.2.4.35\lib\netstandard2.0\MessagePack.dll</HintPath>
     </Reference>
@@ -89,6 +95,9 @@
     </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
     <Reference Include="Nerdbank.Streams, Version=2.9.0.0, Culture=neutral, PublicKeyToken=cac503e1823ce71c, processorArchitecture=MSIL">
       <HintPath>..\packages\Nerdbank.Streams.2.9.109\lib\netstandard2.0\Nerdbank.Streams.dll</HintPath>
@@ -293,6 +302,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Threading.Analyzers.17.1.46\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Threading.Analyzers.17.1.46\build\Microsoft.VisualStudio.Threading.Analyzers.targets'))" />
     <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets'))" />
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.7.1\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.7.1\build\MaterialDesignThemes.targets'))" />
   </Target>
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
+  <Import Project="..\packages\MaterialDesignThemes.4.7.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.7.1\build\MaterialDesignThemes.targets')" />
 </Project>

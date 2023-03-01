@@ -84,7 +84,7 @@ namespace ProyectoEntregar
         {
             string itemElegido=(string)cmbHabitaciones.SelectedItem;
             var db = new SQLiteConnection("database.db3");
-            Relaciones relaciones = new Relaciones(itemElegido,user," "," "," ");
+            Relaciones relaciones = new Relaciones(itemElegido,user,"Prueba","00:00","00:00");
             db.Insert(relaciones);
             db.Close();
             MainWindow mainWindow = new MainWindow(user);

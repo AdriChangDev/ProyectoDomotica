@@ -33,7 +33,8 @@ namespace ProyectoEntregar
             string usuario = user.Text;
             string contrasenia = password.Password;
             Console.WriteLine("hola");
-            using (  var db = new SQLiteConnection("database.db3"))
+            using (var db = new SQLiteConnection("database.db3")
+)
             {
                 var query = $"SELECT * FROM user WHERE Usuario='{usuario}' AND password='{contrasenia}'";
                 var result = db.Query<User>(query);
