@@ -46,3 +46,7 @@ Bueno he consgeguido hacer que lea y muestre el texto con los formatos seleccion
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 01/03/2023
 He conseguido que lea la base de datos y que cuando añadas una habitacion la meta en la bbdd
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+01/03/2023
+He corregido algunos errores
+
