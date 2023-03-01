@@ -43,3 +43,6 @@ He creado el xml de la configuracion con los cvambios que tengo que hacer solo m
 28/02/2023
 Hay un nueva persona qen el repositorio que soy yo desde el ordeandor de casa
 Bueno he consgeguido hacer que lea y muestre el texto con los formatos seleccionados en el config.xml
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+01/03/2023
+He conseguido que lea la base de datos y que cuando añadas una habitacion la meta en la bbdd
