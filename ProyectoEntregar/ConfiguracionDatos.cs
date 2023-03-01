@@ -17,27 +17,35 @@ namespace ProyectoEntregar
     
         public static void LeerXML()
         {
+            if (System.IO.File.Exists("config.xml"))
+            {
+                // Cargar el archivo XML
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.Load("config.xml");
 
-            // Cargar el archivo XML
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load("config.xml");
+                // Obtener los valores de tamaño, fuente y estilo de fuente del archivo XML
+                XmlNode sizeNode = xmlDocument.SelectSingleNode("/configuracion/Size");
+                XmlNode fontNode = xmlDocument.SelectSingleNode("/configuracion/Font");
+                XmlNode styleNode = xmlDocument.SelectSingleNode("/configuracion/Style");
 
-            // Obtener los valores de tamaño, fuente y estilo de fuente del archivo XML
-            XmlNode sizeNode = xmlDocument.SelectSingleNode("/configuracion/Size");
-            XmlNode fontNode = xmlDocument.SelectSingleNode("/configuracion/Font");
-            XmlNode styleNode = xmlDocument.SelectSingleNode("/configuracion/Style");
+                // Convertir los valores de tamaño y estilo a tipos numéricos
+                Size = int.Parse(sizeNode.InnerText);
+                Font = fontNode.InnerText;
 
-            // Convertir los valores de tamaño y estilo a tipos numéricos
-           Size = int.Parse(sizeNode.InnerText);
-           Font = fontNode.InnerText;
-         
-            if (styleNode.InnerText.Contains("Italic"))
-                Style = FontStyles.Italic;
-            if (styleNode.InnerText.Contains("Bold"))
-                Weight = FontWeights.Bold;
+                if (styleNode.InnerText.Contains("Italic"))
+                    Style = FontStyles.Italic;
+                if (styleNode.InnerText.Contains("Bold"))
+                    Weight = FontWeights.Bold;
 
+                muestraDatos();
+            }
+            else
+            {
+                // El archivo config.xml no existe
+                // Realizar una acción alternativa o mostrar un mensaje de error
+                MessageBox.Show("El archivo config.xml no existe.");
+            }
 
-            muestraDatos();
         }
         public static void muestraDatos()
         {

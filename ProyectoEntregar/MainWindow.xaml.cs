@@ -57,11 +57,10 @@ namespace ProyectoEntregar
                 if (!alertaMostrada)
                 {
                     Alerta alerta = new Alerta(user);
-                    if (alerta == null)
-                    {
-                        alerta.ShowDialog();
+                   
+                        alerta.Show();
                         this.Close();
-                    }
+                    
                     alertaMostrada = true;
                 }
             }

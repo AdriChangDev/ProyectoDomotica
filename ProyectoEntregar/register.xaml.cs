@@ -15,8 +15,10 @@ namespace ProyectoEntregar
             if (System.IO.File.Exists("database.db3")) { } 
             else
             {
+                System.IO.File.Create("database.db3");
                 var db = new SQLiteConnection("database.db3");
                 db.CreateTable<User>();
+                db.CreateTable<Relaciones>();
                 db.Close();
             }
             string usuario = TxtUsuario.Text;
