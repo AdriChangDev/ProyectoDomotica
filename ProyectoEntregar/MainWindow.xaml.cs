@@ -1,24 +1,13 @@
-﻿using SQLite;
+﻿using Microsoft.VisualStudio.Utilities.Internal;
+using Newtonsoft.Json.Linq;
+using SQLite;
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
-
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Button = System.Windows.Controls.Button;
-using ComboBox = System.Windows.Controls.ComboBox;
-using Label = System.Windows.Controls.Label;
 
 namespace ProyectoEntregar
 {
@@ -29,6 +18,7 @@ namespace ProyectoEntregar
     {
         private string user;
         private bool alertaMostrada = false;
+        Grid grid;
 
         private int contador = 1;
      
@@ -105,6 +95,13 @@ namespace ProyectoEntregar
                     ti.FontWeight= ConfiguracionDatos.Weight;
                     TControl.Items.Insert(contador - 1, ti);
                     contador++;
+                    // Crear un Grid y agregarlo al contenido del TabItem
+                     grid = new Grid();
+                    grid.Background = new SolidColorBrush(Colors.Red);
+
+                    ti.Content = grid;
+
+
                     // Código para crear el TabItem
                     string nombreHabitacion = item;
 
@@ -113,23 +110,84 @@ namespace ProyectoEntregar
 
                     foreach (var so in result)
                     {
-                        Console.WriteLine(so.NombreHabitacion.ToString());
+                       
+                            if (!string.IsNullOrEmpty(so.Dispositivo) && !string.IsNullOrEmpty(so.HoraEncendido) && !string.IsNullOrEmpty(so.HoraApagado))
+                            {
 
+                                Border border = new Border();
+                                border.Background = Brushes.White;
+                                border.BorderThickness = new Thickness(1);
+                                border.BorderBrush = Brushes.Black;
+                                border.CornerRadius = new CornerRadius(5);
+                                border.Padding = new Thickness(5);
+                                border.Width = 100;
+                                border.Height = 100;
+                                border.HorizontalAlignment = HorizontalAlignment.Left;
+                                border.VerticalAlignment = VerticalAlignment.Top;
+
+                                Grid gridContainer = new Grid();
+                                gridContainer.RowDefinitions.Add(new RowDefinition());
+                                gridContainer.RowDefinitions.Add(new RowDefinition());
+
+                                TextBlock textBlock1 = new TextBlock();
+                                ConfiguracionDatos.LeerXML();
+                                textBlock1.Text = so.Dispositivo;
+                                textBlock1.HorizontalAlignment = HorizontalAlignment.Center;
+                                textBlock1.FontSize = ConfiguracionDatos.Size;
+                                textBlock1.FontFamily = new FontFamily(ConfiguracionDatos.Font);
+                                textBlock1.FontStyle = ConfiguracionDatos.Style;
+                                textBlock1.FontWeight = ConfiguracionDatos.Weight;
+                                gridContainer.Children.Add(textBlock1);
+                                Grid.SetRow(textBlock1, 0);
+
+                                TextBlock textBlock2 = new TextBlock();
+                                ConfiguracionDatos.LeerXML();
+                                textBlock2.Text = so.HoraEncendido + "-" + so.HoraApagado;
+                                textBlock2.HorizontalAlignment = HorizontalAlignment.Center;
+                                textBlock2.FontSize = ConfiguracionDatos.Size;
+                                textBlock2.FontFamily = new FontFamily(ConfiguracionDatos.Font);
+                                textBlock2.FontStyle = ConfiguracionDatos.Style;
+                                textBlock2.FontWeight = ConfiguracionDatos.Weight;
+                                gridContainer.Children.Add(textBlock2);
+                                Grid.SetRow(textBlock2, 1);
+
+                                border.Child = gridContainer;
+                                grid.Children.Add(border);
+
+
+                                grid.SizeChanged += Grid_SizeChanged;
+                            }
+                       
                     }
-
                 }
 
 
             }
         }
+        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            foreach (var child in grid.Children)
+            {
+                if (child is Border border)
+                {
+                    double newWidth = e.NewSize.Width / 10;
+                    double newHeight = e.NewSize.Height / 5; 
+                    border.Width = newWidth;
+                    border.Height = newHeight;
+                }
+            }
+        }
+        
 
-                
+
+
+
+
+
+
+
 
     }
-
-
-
-
 }
 
     
