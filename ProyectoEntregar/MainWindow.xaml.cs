@@ -200,6 +200,9 @@ namespace ProyectoEntregar
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("OK"+nombreHabitacion);
+            AlertaDispositivo alert = new AlertaDispositivo(user,nombreHabitacion);
+            alert.Show();
+            this.Close();
         }
         private void TControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

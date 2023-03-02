@@ -13,7 +13,8 @@ namespace ProyectoEntregar
         private void IniciarSesion_Click(object sender, RoutedEventArgs e)
         {
             login login = new login();
-            login.ShowDialog();
+            login.Show();
+            this.Close();
 
         }
 
