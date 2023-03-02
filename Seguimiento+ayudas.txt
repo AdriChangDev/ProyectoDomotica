@@ -58,5 +58,7 @@ Tengo la simulacion de añadir dispositivos, acabo de darme cuenta que el mostra
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 02/03/2023
 Esta todo funcional queda controlar los cerrar pestañas de las ventanas
-
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+02/03/2023
+Esta todo funcional solo me queda poner el TuggleButton para controlar que este activado o no
 
