@@ -36,6 +36,8 @@ namespace ProyectoEntregar
         {
 
             InitializeComponent();
+            Closing += MainWindow_Closing; // suscribirse al evento Closing
+
             TControl.SelectionChanged += TControl_SelectionChanged;
 
             user = usuario;
@@ -258,6 +260,20 @@ namespace ProyectoEntregar
                 this.Close();
             }
            
+        }
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (MessageBox.Show("¿Está seguro de quieres cerrar sesion?", "Confirmación", MessageBoxButton.YesNo) == MessageBoxResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+
+                Window1 w1 = new Window1();
+                w1.Show();
+            }
         }
 
     }

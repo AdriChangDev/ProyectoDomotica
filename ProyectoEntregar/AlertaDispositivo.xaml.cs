@@ -35,6 +35,7 @@ namespace ProyectoEntregar
             user=usuario;
             hab = habitacion;
             InitializeComponent();
+            Closing += MainWindow_Closing; // suscribirse al evento Closing
             DataContext = new Tiempo();
             switch (habitacion)
             {
@@ -149,6 +150,12 @@ namespace ProyectoEntregar
 
 
 
+        }
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+           
+            MainWindow mw=new MainWindow(user);
+            mw.Show();
         }
     }
 }

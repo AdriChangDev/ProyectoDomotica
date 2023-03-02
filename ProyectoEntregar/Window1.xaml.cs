@@ -8,6 +8,7 @@ namespace ProyectoEntregar
         public Window1()
         {
             InitializeComponent();
+
         }
 
         private void IniciarSesion_Click(object sender, RoutedEventArgs e)
