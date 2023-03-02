@@ -50,7 +50,9 @@ He conseguido que lea la base de datos y que cuando añadas una habitacion la me
 01/03/2023
 He corregido algunos errores
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-071/03/2023
+01/03/2023
 He conseguido hacer el boton de añadir
-
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+02/03/2023
+Tengo la simulacion de añadir dispositivos, acabo de darme cuenta que el mostrar dispositivos estaba mal asi que tengo que modificarlo
 
