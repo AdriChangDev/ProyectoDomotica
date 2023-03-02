@@ -11,6 +11,8 @@ using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using static SQLite.SQLite3;
+using static SQLite.TableMapping;
 
 namespace ProyectoEntregar
 {
@@ -19,18 +21,20 @@ namespace ProyectoEntregar
     /// </summary>
     public partial class MainWindow : Window
     {
-        string nombreHabitacion="";
+        string nombreHabitacion = "";
         private string user;
         private bool alertaMostrada = false;
+        private bool alertaMostrada2 = false;
+
         Grid grid;
 
         private int contador = 1;
-     
+
 
 
         public MainWindow(string usuario)
         {
-            
+
             InitializeComponent();
             TControl.SelectionChanged += TControl_SelectionChanged;
 
@@ -40,7 +44,7 @@ namespace ProyectoEntregar
             tabItem.FontSize = ConfiguracionDatos.Size;
             tabItem.FontStyle = ConfiguracionDatos.Style;
             tabItem.FontWeight = ConfiguracionDatos.Weight;
-            
+
 
 
         }
@@ -53,10 +57,10 @@ namespace ProyectoEntregar
                 if (!alertaMostrada)
                 {
                     Alerta alerta = new Alerta(user);
-                   
-                        alerta.Show();
-                        this.Close();
-                    
+
+                    alerta.Show();
+                    this.Close();
+
                     alertaMostrada = true;
                 }
             }
@@ -68,7 +72,6 @@ namespace ProyectoEntregar
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Grid gridContainer = null;
             TextBlock usuarios = (TextBlock)FindName("usuarios");
             usuarios.Text = user;
             ConfiguracionDatos.LeerXML();
@@ -103,116 +106,164 @@ namespace ProyectoEntregar
                     contador++;
 
                     // Crear un Grid y agregarlo al contenido del TabItem
-                    grid = new Grid();
-                    grid.Background = new SolidColorBrush(Colors.Aqua);
-
-                    ti.Content = grid;
-
-                    // Código para crear el TabItem
-                     nombreHabitacion = item;
-
-                    query = "SELECT * FROM Relaciones WHERE User = ? AND NombreHabitacion = ?";
-                    result = db.Query<Relaciones>(query, user, nombreHabitacion);
-
-                    // Verificar si la habitación tiene al menos un dispositivo
-                    bool tieneDispositivos = result.Any(so => !string.IsNullOrEmpty(so.Dispositivo) && !string.IsNullOrEmpty(so.HoraEncendido) && !string.IsNullOrEmpty(so.HoraApagado));
-
-                    if (tieneDispositivos)
-                    {
-                        foreach (var so in result)
-                        {
-                            if (!string.IsNullOrEmpty(so.Dispositivo) && !string.IsNullOrEmpty(so.HoraEncendido) && !string.IsNullOrEmpty(so.HoraApagado))
-                            {
-                                Border border = new Border();
-                                border.Background = Brushes.White;
-                                border.BorderThickness = new Thickness(1);
-                                border.BorderBrush = Brushes.Black;
-                                border.CornerRadius = new CornerRadius(5);
-                                border.Padding = new Thickness(5);
-                                border.Width = 200;
-                                border.Height = 200;
-                                border.HorizontalAlignment = HorizontalAlignment.Left;
-                                border.VerticalAlignment = VerticalAlignment.Top;
-
-                                gridContainer = new Grid();
-                                gridContainer.RowDefinitions.Add(new RowDefinition());
-                                gridContainer.RowDefinitions.Add(new RowDefinition());
-
-                                TextBlock textBlock1 = new TextBlock();
-                                ConfiguracionDatos.LeerXML();
-                                textBlock1.Text = so.Dispositivo;
-                                textBlock1.HorizontalAlignment = HorizontalAlignment.Center;
-                                textBlock1.FontSize = ConfiguracionDatos.Size;
-                                textBlock1.FontFamily = new FontFamily(ConfiguracionDatos.Font);
-                                textBlock1.FontStyle = ConfiguracionDatos.Style;
-                                textBlock1.FontWeight = ConfiguracionDatos.Weight;
-                                gridContainer.Children.Add(textBlock1);
-                                Grid.SetRow(textBlock1, 0);
-
-                                TextBlock textBlock2 = new TextBlock();
-                                ConfiguracionDatos.LeerXML();
-                                textBlock2.Text = so.HoraEncendido + "-" + so.HoraApagado;
-                                textBlock2.HorizontalAlignment = HorizontalAlignment.Center;
-                                textBlock2.FontSize = ConfiguracionDatos.Size;
-                                textBlock2.FontFamily = new FontFamily(ConfiguracionDatos.Font);
-                                textBlock2.FontStyle = ConfiguracionDatos.Style;
-                                textBlock2.FontWeight = ConfiguracionDatos.Weight;
-                                gridContainer.Children.Add(textBlock2);
-                                Grid.SetRow(textBlock2, 1);
-
-                                border.Child = gridContainer;
-                                grid.Children.Add(border);
-                                // Agregar el botón con el símbolo de suma al Grid
-                                var addButton = new Button();
-                                addButton.Content = new PackIcon { Kind = PackIconKind.Plus };
-                                addButton.HorizontalAlignment = HorizontalAlignment.Right;
-
-                                addButton.VerticalAlignment = VerticalAlignment.Bottom;
-                                addButton.Content = "+";
-                                // Establecer el color de fondo para el estado normal y "hover"
-                                addButton.Background = new SolidColorBrush(Colors.Beige);
-
-                                addButton.Width = 80;
-                                addButton.Height = 80;
-
-                                // Agregar un controlador de eventos para el botón
-                                addButton.Click += BtnAdd_Click;
-                                addButton.Margin = new Thickness(0, 0, 10, 10);
-
-
-
-
-                                grid.Children.Add(addButton);
-
-                            }
-                          
-
-                        }
-                    }
                 }
+                grid = new Grid();
+                
+
+
+
+
             }
-          
-           
+
+
 
 
         }
-      
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("OK"+nombreHabitacion);
-            AlertaDispositivo alert = new AlertaDispositivo(user,nombreHabitacion);
-            alert.Show();
-            this.Close();
-        }
-        private void TControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+
+       
+        
+            private void TControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            {
             var tabControl = (TabControl)sender;
             var tabItem = (TabItem)tabControl.SelectedItem;
             nombreHabitacion = tabItem.Header.ToString();
+
+            // Crear un Grid para mostrar los dispositivos y el botón
+            // Crear un Grid para mostrar los dispositivos y el botón
+            var grid = new Grid();
+
+            // Establecer la alineación del Grid para que se ajuste automáticamente al tamaño disponible
+            grid.HorizontalAlignment = HorizontalAlignment.Stretch;
+            grid.VerticalAlignment = VerticalAlignment.Stretch;
+
+            // Agregar una fila y una columna al Grid para el StackPanel
+            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+
+            
+
+            
+
+            // Obtener la lista de dispositivos para esa habitación desde la base de datos
+            var dispositivos = ObtenerDispositivosDeBaseDeDatos(nombreHabitacion);
+
+            // Crear un StackPanel para mostrar los dispositivos
+            var stackPanel = new StackPanel();
+            stackPanel.Orientation = Orientation.Horizontal;
+            stackPanel.Background = new SolidColorBrush(Colors.Aqua);
+
+            // Crear un Border para cada dispositivo y agregarlo al StackPanel
+            // Crear un Border para cada dispositivo
+            foreach (var dispositivo in dispositivos)
+            {
+                var border = new Border();
+                border.Background = Brushes.White;
+                border.BorderThickness = new Thickness(1);
+                border.BorderBrush = Brushes.Black;
+                border.CornerRadius = new CornerRadius(5);
+                border.Padding = new Thickness(5);
+                border.Width = 200;
+                border.Height = 200;
+                border.HorizontalAlignment = HorizontalAlignment.Left;
+                border.VerticalAlignment = VerticalAlignment.Top;
+                border.Margin = new Thickness(10);
+
+                var nombreDispositivo = new TextBlock();
+                nombreDispositivo.Text = dispositivo.Dispositivo;
+                nombreDispositivo.HorizontalAlignment = HorizontalAlignment.Center;
+                nombreDispositivo.VerticalAlignment = VerticalAlignment.Top;
+
+                var horaEncendido = new TextBlock();
+                horaEncendido.Text = "Encendido: " + dispositivo.HoraEncendido.ToString();
+                horaEncendido.HorizontalAlignment = HorizontalAlignment.Center;
+                horaEncendido.VerticalAlignment = VerticalAlignment.Center;
+
+                var horaApagado = new TextBlock();
+                horaApagado.Text = "Apagado: " + dispositivo.HoraApagado.ToString();
+                horaApagado.HorizontalAlignment = HorizontalAlignment.Center;
+                horaApagado.VerticalAlignment = VerticalAlignment.Bottom;
+
+                // Agregar los TextBlocks al Border
+                border.Child = new StackPanel() { Children = { nombreDispositivo, horaEncendido, horaApagado } };
+
+                // Agregar el Border al Grid
+                stackPanel.Children.Add(border);
+            }
+
+            // Agregar el StackPanel al Grid
+            grid.Children.Add(stackPanel);
+            Grid.SetRow(stackPanel, 0);
+            Grid.SetColumn(stackPanel, 0);
+
+            // Agregar un controlador de eventos para el botón
+            var addButton = new Button();
+            addButton.Content = "+";
+            addButton.HorizontalAlignment = HorizontalAlignment.Right;
+            addButton.VerticalAlignment = VerticalAlignment.Bottom;
+            // Establecer el color de fondo para el estado normal y "hover"
+            addButton.Background = new SolidColorBrush(Colors.LightGray);
+            addButton.BorderBrush = new SolidColorBrush(Colors.Black);
+            addButton.BorderThickness = new Thickness(1);
+
+            // Establecer el tamaño y la posición del botón
+            addButton.Width = 50;
+            addButton.Height = 50;
+            addButton.Margin = new Thickness(0, 0, 10, 10);
+
+            //Agregar el botón al Grid en la segunda fila y segunda columna
+            grid.Children.Add(addButton);
+            Grid.SetRow(addButton, 1);
+            Grid.SetColumn(addButton, 1);
+
+            // Establecer el tamaño y la posición del botón
+            addButton.Width = 50;
+            addButton.Height = 50;
+            addButton.Margin = new Thickness(0, 0, 10, 10);
+
+            // Agregar un controlador de eventos para el botón
+            addButton.Click += BtnAdd_Click;
+
+            // Agregar el Grid al TabItem
+            tabItem.Content = grid;
+
+
+
+        }
+        private List<Relaciones> ObtenerDispositivosDeBaseDeDatos(string nombreHabitacion)
+        {
+
+            var db = new SQLiteConnection("database.db3");
+
+            string query = "SELECT * FROM Relaciones WHERE User = ? AND NombreHabitacion = ?";
+            var result = db.Query<Relaciones>(query, user, nombreHabitacion);
+            return result;
+        }
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!alertaMostrada2)
+                {
+                    AlertaDispositivo alert = new AlertaDispositivo(user, nombreHabitacion);
+
+                    alert.Show();
+                    this.Close();
+
+
+                    alertaMostrada2 = true;
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                this.Close();
+            }
+           
         }
 
-
     }
+
+
+
 }
 
     
