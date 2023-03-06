@@ -41,9 +41,7 @@ namespace ProyectoEntregar
             }
             else
             {
-                // El archivo config.xml no existe
-                // Realizar una acción alternativa o mostrar un mensaje de error
-                MessageBox.Show("El archivo config.xml no existe.");
+                
             }
 
         }

@@ -49,7 +49,7 @@ namespace ProyectoEntregar
                     MainWindow  main= new MainWindow(usuario);
                
                     main.ShowDialog();
-                    this.Close();
+                    this.Hide();
                 }
                 else
                 {

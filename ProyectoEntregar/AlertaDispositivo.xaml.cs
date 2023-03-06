@@ -114,7 +114,7 @@ namespace ProyectoEntregar
             if (aux.Count == 0)
             {
                 MessageBox.Show("No se pueden añadir más elementos.", "Alerta de precaución", MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Warning);
-                this.Close();
+                this.Hide();
                 MainWindow mw = new MainWindow(user);
                 mw.Show();
             }

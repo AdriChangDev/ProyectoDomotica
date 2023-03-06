@@ -72,7 +72,7 @@ namespace ProyectoEntregar
             if (aux.Count == 0) {
                 MessageBox.Show("No se pueden añadir más elementos.", "Alerta de precaución", MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Warning);
                 vacio = true;
-                this.Close();
+                this.Hide();
             }
             else 
             { 
@@ -89,7 +89,7 @@ namespace ProyectoEntregar
             db.Close();
             MainWindow mainWindow = new MainWindow(user);
             mainWindow.Show();
-            this.Close();
+            this.Hide();
 
 
         }

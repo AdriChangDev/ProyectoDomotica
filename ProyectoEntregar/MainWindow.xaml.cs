@@ -61,7 +61,7 @@ namespace ProyectoEntregar
                     Alerta alerta = new Alerta(user);
 
                     alerta.Show();
-                    this.Close();
+                    this.Hide();
 
                     alertaMostrada = true;
                 }
@@ -158,38 +158,42 @@ namespace ProyectoEntregar
             // Crear un Border para cada dispositivo
             foreach (var dispositivo in dispositivos)
             {
-                var border = new Border();
-                border.Background = Brushes.White;
-                border.BorderThickness = new Thickness(1);
-                border.BorderBrush = Brushes.Black;
-                border.CornerRadius = new CornerRadius(5);
-                border.Padding = new Thickness(5);
-                border.Width = 200;
-                border.Height = 200;
-                border.HorizontalAlignment = HorizontalAlignment.Left;
-                border.VerticalAlignment = VerticalAlignment.Top;
-                border.Margin = new Thickness(10);
+                if (dispositivo.Dispositivo.IsNullOrWhiteSpace() && dispositivo.HoraEncendido.IsNullOrWhiteSpace() && dispositivo.HoraApagado.IsNullOrWhiteSpace()) { }
+                else
+                {
+                    var border = new Border();
+                    border.Background = Brushes.White;
+                    border.BorderThickness = new Thickness(1);
+                    border.BorderBrush = Brushes.Black;
+                    border.CornerRadius = new CornerRadius(5);
+                    border.Padding = new Thickness(5);
+                    border.Width = 200;
+                    border.Height = 200;
+                    border.HorizontalAlignment = HorizontalAlignment.Left;
+                    border.VerticalAlignment = VerticalAlignment.Center;
+                    border.Margin = new Thickness(10);
 
-                var nombreDispositivo = new TextBlock();
-                nombreDispositivo.Text = dispositivo.Dispositivo;
-                nombreDispositivo.HorizontalAlignment = HorizontalAlignment.Center;
-                nombreDispositivo.VerticalAlignment = VerticalAlignment.Top;
+                    var nombreDispositivo = new TextBlock();
+                    nombreDispositivo.Text = dispositivo.Dispositivo;
+                    nombreDispositivo.HorizontalAlignment = HorizontalAlignment.Center;
+                    nombreDispositivo.VerticalAlignment = VerticalAlignment.Center;
 
-                var horaEncendido = new TextBlock();
-                horaEncendido.Text = "Encendido: " + dispositivo.HoraEncendido.ToString();
-                horaEncendido.HorizontalAlignment = HorizontalAlignment.Center;
-                horaEncendido.VerticalAlignment = VerticalAlignment.Center;
+                    var horaEncendido = new TextBlock();
+                    horaEncendido.Text = "Encendido: " + dispositivo.HoraEncendido.ToString();
+                    horaEncendido.HorizontalAlignment = HorizontalAlignment.Center;
+                    horaEncendido.VerticalAlignment = VerticalAlignment.Center;
 
-                var horaApagado = new TextBlock();
-                horaApagado.Text = "Apagado: " + dispositivo.HoraApagado.ToString();
-                horaApagado.HorizontalAlignment = HorizontalAlignment.Center;
-                horaApagado.VerticalAlignment = VerticalAlignment.Bottom;
+                    var horaApagado = new TextBlock();
+                    horaApagado.Text = "Apagado: " + dispositivo.HoraApagado.ToString();
+                    horaApagado.HorizontalAlignment = HorizontalAlignment.Center;
+                    horaApagado.VerticalAlignment = VerticalAlignment.Center;
 
-                // Agregar los TextBlocks al Border
-                border.Child = new StackPanel() { Children = { nombreDispositivo, horaEncendido, horaApagado } };
+                    // Agregar los TextBlocks al Border
+                    border.Child = new StackPanel() { Children = { nombreDispositivo, horaEncendido, horaApagado } };
 
-                // Agregar el Border al Grid
-                stackPanel.Children.Add(border);
+                    // Agregar el Border al Grid
+                    stackPanel.Children.Add(border);
+                }
             }
 
             // Agregar el StackPanel al Grid
@@ -249,7 +253,7 @@ namespace ProyectoEntregar
                     AlertaDispositivo alert = new AlertaDispositivo(user, nombreHabitacion);
 
                     alert.Show();
-                    this.Close();
+                    this.Hide();
 
 
                     alertaMostrada2 = true;
@@ -257,7 +261,7 @@ namespace ProyectoEntregar
             }catch(Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                this.Close();
+                this.Hide();
             }
            
         }
