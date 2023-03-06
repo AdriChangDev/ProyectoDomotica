@@ -276,8 +276,6 @@ namespace ProyectoEntregar
             }
             else
             {
-                this.Close();
-
                 Window1 w1 = new Window1();
                 w1.Show();
             }
