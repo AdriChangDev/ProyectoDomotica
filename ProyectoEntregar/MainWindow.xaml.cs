@@ -161,16 +161,17 @@ namespace ProyectoEntregar
                 if (dispositivo.Dispositivo.IsNullOrWhiteSpace() && dispositivo.HoraEncendido.IsNullOrWhiteSpace() && dispositivo.HoraApagado.IsNullOrWhiteSpace()) { }
                 else
                 {
+                    ConfiguracionDatos.LeerXML();
                     var border = new Border();
                     border.Background = Brushes.White;
                     border.BorderThickness = new Thickness(1);
                     border.BorderBrush = Brushes.Black;
                     border.CornerRadius = new CornerRadius(5);
                     border.Padding = new Thickness(5);
-                    border.Width = 200;
-                    border.Height = 200;
+                    border.Width = ConfiguracionDatos.Size * 10; ;
+                    border.Height = ConfiguracionDatos.Size * 10; ; 
                     border.HorizontalAlignment = HorizontalAlignment.Left;
-                    border.VerticalAlignment = VerticalAlignment.Center;
+                    border.VerticalAlignment = VerticalAlignment.Top;
                     border.Margin = new Thickness(10);
 
                     var nombreDispositivo = new TextBlock();
@@ -270,10 +271,12 @@ namespace ProyectoEntregar
 
             if (MessageBox.Show("¿Está seguro de quieres cerrar sesion?", "Confirmación", MessageBoxButton.YesNo) == MessageBoxResult.No)
             {
+                
                 e.Cancel = true;
             }
             else
             {
+                this.Close();
 
                 Window1 w1 = new Window1();
                 w1.Show();
