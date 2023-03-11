@@ -59,7 +59,7 @@ namespace ProyectoEntregar.Logica
             using (SQLiteConnection conexion = new SQLiteConnection(cadena))
             {
                 conexion.Open();
-                string query = "select * from User ";
+                string query = "select distinct * from User ";
                 SQLiteCommand cmd = new SQLiteCommand(query, conexion);
                 cmd.CommandType = System.Data.CommandType.Text;
                 using (SQLiteDataReader dr = cmd.ExecuteReader())
@@ -87,7 +87,7 @@ return listas;
             using (SQLiteConnection conexion = new SQLiteConnection(cadena))
             {
                 conexion.Open();
-                string query = "select * from User where Usuario=@User AND Password=@Password ";
+                string query = "select distinct * from User where Usuario=@User AND Password=@Password ";
                 SQLiteCommand cmd = new SQLiteCommand(query, conexion);
                 cmd.Parameters.Add(new SQLiteParameter("@User", user));
                 cmd.Parameters.Add(new SQLiteParameter("@Password", passwd));

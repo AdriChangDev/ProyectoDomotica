@@ -72,6 +72,23 @@ namespace ProyectoEntregar
                 Console.WriteLine("Error: " + ex.Message);
             }
         }
+        public  List<string> obtenerNumerosDistintos(List<Relaciones> numeros)
+        {
+            // Creamos una nueva lista para almacenar los números distintos
+            List<string> numerosDistintos = new List<string>();
+
+            // Recorremos la lista de entrada y agregamos cada número a la lista de números distintos si no está allí
+            foreach (Relaciones num in numeros)
+            {
+                if (!numerosDistintos.Contains(num.NombreHabitacion))
+                {
+                    numerosDistintos.Add(num.NombreHabitacion);
+                }
+            }
+
+            return numerosDistintos;
+        }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -83,18 +100,11 @@ namespace ProyectoEntregar
            
                 string hab = "A";
             var result = Logica.Logica.Instanci.Listar(user);
-                List<string> aux = new List<string>();
 
-                for (int i = 0; i < result.Count; i++)
-                {
-                    if (hab.ToUpper() != result[i].NombreHabitacion.ToUpper())
-                    {
-                        hab = result[i].NombreHabitacion;
-                        aux.Add(hab);
-                    }
-                }
+            List<string> aux = obtenerNumerosDistintos(result);
 
-                foreach (var item in aux)
+
+            foreach (var item in aux)
                 {
                     contador = TControl.Items.Count;
                     TabItem ti = new TabItem { Header = item };
@@ -245,16 +255,13 @@ namespace ProyectoEntregar
         {
             try
             {
-                if (!alertaMostrada2)
-                {
+                
                     AlertaDispositivo alert = new AlertaDispositivo(user, nombreHabitacion);
                     alert.Owner = this;
                     alert.Show();
                     this.Hide();
 
 
-                    alertaMostrada2 = true;
-                }
             }catch(Exception ex)
             {
                 Console.WriteLine(ex.ToString());

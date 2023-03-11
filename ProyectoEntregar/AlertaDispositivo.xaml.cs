@@ -54,7 +54,7 @@ namespace ProyectoEntregar
                     listaDispositivos.Add("Persiana");
                     listaDispositivos.Add("Televisor");
                     break;
-                case "Habitacion  Invitado":
+                case "Habitacion Invitado":
                     listaDispositivos = new List<string>();
                     listaDispositivos.Add("Bombilla");
                     listaDispositivos.Add("Termostato");
@@ -132,6 +132,7 @@ namespace ProyectoEntregar
         }
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
+            Boolean adding = false;
             string horaInicio = string.Format("{0:D2}:{1:D2}", int.Parse(cbxEncendidoHoras.Text), int.Parse(cbxEncendidoMinutos.Text));
             string horaApagado = string.Format("{0:D2}:{1:D2}", int.Parse(cbxApagadoHoras.Text), int.Parse(cbxApagadoMinutos.Text));
 
@@ -144,8 +145,12 @@ namespace ProyectoEntregar
                 HoraApagado= horaApagado
 
             };
-            Boolean adding = Logica.Logica.Instanci.Guardar(rela);
-
+            if (rela.Dispositivo.Equals(null))
+            {
+            }
+            else {
+                adding = Logica.Logica.Instanci.Guardar(rela);
+            }
             if (adding)
             {
                 MessageBox.Show("Añadido Correctamente", "Alerta de añadido Correctamente", MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
@@ -166,6 +171,7 @@ namespace ProyectoEntregar
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             this.Owner.Show();
+
         }
     }
 }

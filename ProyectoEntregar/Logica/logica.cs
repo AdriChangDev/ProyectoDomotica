@@ -60,7 +60,7 @@ namespace ProyectoEntregar.Logica
             using (SQLiteConnection conexion = new SQLiteConnection(cadena))
             {
                 conexion.Open();
-                string query = "select * from Relaciones where User=@user";
+                string query = "select distinct * from Relaciones where User=@user";
                 SQLiteCommand cmd= new SQLiteCommand(query, conexion);
                 cmd.Parameters.Add(new SQLiteParameter("@user", user));
                 cmd.CommandType=System.Data.CommandType.Text;
@@ -93,7 +93,7 @@ namespace ProyectoEntregar.Logica
             using (SQLiteConnection conexion = new SQLiteConnection(cadena))
             {
                 conexion.Open();
-                string query = "select * from Relaciones where User=@user AND NombreHabitacion=@NombreHabitacion";
+                string query = "select distinct * from Relaciones where User=@user AND NombreHabitacion=@NombreHabitacion";
                 SQLiteCommand cmd = new SQLiteCommand(query, conexion);
                 cmd.Parameters.Add(new SQLiteParameter("@user", user));
                 cmd.Parameters.Add(new SQLiteParameter("@NombreHabitacion", hab));

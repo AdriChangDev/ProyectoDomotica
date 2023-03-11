@@ -36,7 +36,7 @@ namespace ProyectoEntregar
                     MessageBox.Show("¡Login correcto!","Login",MessageBoxButton.OK,(MessageBoxImage)MessageBoxIcon.Information);
                     
                     MainWindow  main= new MainWindow(usuario);
-                    main.Owner = this;
+                    main.Owner = this.Owner;
                     main.Show();
                     this.Hide();
                 }
