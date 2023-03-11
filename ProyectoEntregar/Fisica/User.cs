@@ -7,19 +7,11 @@ using System.Threading.Tasks;
 
 namespace ProyectoEntregar
 {
-     class User
+    public  class User
     {
-        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        [Unique]
         public string Usuario { get; set; }
         public string Password { get; set; }
 
-        public User() { }
-        public User( string usuario, string password)
-        {
-            Usuario = usuario;
-            Password = password;
-        }
     }
 }

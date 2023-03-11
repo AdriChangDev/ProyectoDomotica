@@ -14,8 +14,9 @@ namespace ProyectoEntregar
         private void IniciarSesion_Click(object sender, RoutedEventArgs e)
         {
             login login = new login();
+            login.Owner=this;
             login.Show();
-            this.Close();
+            this.Hide();
 
         }
 

@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProyectoEntregar.Fisica;
 using static System.Net.Mime.MediaTypeNames;
 using MessageBox = System.Windows.MessageBox;
 
@@ -37,8 +38,8 @@ namespace ProyectoEntregar
             user = usuario;
             using (var db = new SQLiteConnection("database.db3"))
             {
-                string query = "SELECT DISTINCT * FROM Relaciones WHERE User=@user ";
-                List<Relaciones> result = db.Query<Relaciones>(query, user);
+
+                List<Relaciones> result = Logica.Logica.Instanci.Listar(user);
                 listahabitacionesOcupadas = new List<string>();
                 foreach (Relaciones rel in result)
                 {
@@ -83,10 +84,14 @@ namespace ProyectoEntregar
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
             string itemElegido=(string)cmbHabitaciones.SelectedItem;
-            var db = new SQLiteConnection("database.db3");
-            Relaciones relaciones = new Relaciones(itemElegido,user,"Prueba","00:00","00:00");
-            db.Insert(relaciones);
-            db.Close();
+            Relaciones rel = new Relaciones() {
+                NombreHabitacion = itemElegido,
+                Dispositivo = "",
+                HoraApagado = "",
+                HoraEncendido = "",
+                User = user
+            };
+            bool resp = Logica.Logica.Instanci.Guardar(rel);
             MainWindow mainWindow = new MainWindow(user);
             mainWindow.Show();
             this.Hide();

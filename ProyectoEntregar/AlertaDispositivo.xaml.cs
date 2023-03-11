@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProyectoEntregar.Fisica;
 using MessageBox = System.Windows.MessageBox;
 
 namespace ProyectoEntregar
@@ -30,9 +31,9 @@ namespace ProyectoEntregar
         List<string> listaDispositivos;
         List<string> aux = new List<string>();
 
-        public AlertaDispositivo(string usuario,string habitacion)
+        public AlertaDispositivo(string usuario, string habitacion)
         {
-            user=usuario;
+            user = usuario;
             hab = habitacion;
             InitializeComponent();
             Closing += MainWindow_Closing; // suscribirse al evento Closing
@@ -83,17 +84,15 @@ namespace ProyectoEntregar
                 default:
                     Console.WriteLine("Habitación no válida");
                     break;
-            }
-            using (var db = new SQLiteConnection("database.db3"))
-            {
-                string query = "SELECT DISTINCT * FROM Relaciones WHERE User=? AND NombreHabitacion=? ";
-                List<Relaciones> result = db.Query<Relaciones>(query, user,hab);
+            } 
+
+            List<Relaciones> result = Logica.Logica.Instanci.Listar(user, hab); 
                 listaDispositivosUsados = new List<string>();
                 foreach (Relaciones rel in result)
                 {
                     listaDispositivosUsados.Add(rel.Dispositivo);
                 }
-            }
+            
             for (int i = 0; i < listaDispositivos.Count; i++)
             {
                 bool encontrada = false;
@@ -114,9 +113,8 @@ namespace ProyectoEntregar
             if (aux.Count == 0)
             {
                 MessageBox.Show("No se pueden añadir más elementos.", "Alerta de precaución", MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Warning);
-                this.Hide();
-                MainWindow mw = new MainWindow(user);
-                mw.Show();
+                this.Close();
+                this.Owner.Show();
             }
             else
             {
@@ -137,13 +135,27 @@ namespace ProyectoEntregar
             string horaInicio = string.Format("{0:D2}:{1:D2}", int.Parse(cbxEncendidoHoras.Text), int.Parse(cbxEncendidoMinutos.Text));
             string horaApagado = string.Format("{0:D2}:{1:D2}", int.Parse(cbxApagadoHoras.Text), int.Parse(cbxApagadoMinutos.Text));
 
-            Relaciones rela=new Relaciones(hab,user,(string)cmbDisp.SelectedItem,horaInicio,horaApagado);
-            MessageBox.Show("Añadido Correctamente","Alerta de añadido Correctamente", MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
-            var db = new SQLiteConnection("database.db3");
-            db.Insert(rela);
-            db.Close();
-            MainWindow mw = new MainWindow(user);
-            mw.Show();
+            Relaciones rela=new Relaciones()
+            {
+                NombreHabitacion= hab,
+                User=user,
+                Dispositivo=(string)cmbDisp.SelectedItem,
+                 HoraEncendido=horaInicio,
+                HoraApagado= horaApagado
+
+            };
+            Boolean adding = Logica.Logica.Instanci.Guardar(rela);
+
+            if (adding)
+            {
+                MessageBox.Show("Añadido Correctamente", "Alerta de añadido Correctamente", MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("No se puede añadir", "Añadir Fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            this.Owner.Show();
             this.Close();
 
 
@@ -153,9 +165,7 @@ namespace ProyectoEntregar
         }
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-           
-            MainWindow mw=new MainWindow(user);
-            mw.Show();
+            this.Owner.Show();
         }
     }
 }

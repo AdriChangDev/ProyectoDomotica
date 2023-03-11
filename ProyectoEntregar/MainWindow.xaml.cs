@@ -13,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using static SQLite.SQLite3;
 using static SQLite.TableMapping;
+using ProyectoEntregar.Fisica;
 
 namespace ProyectoEntregar
 {
@@ -59,7 +60,7 @@ namespace ProyectoEntregar
                 if (!alertaMostrada)
                 {
                     Alerta alerta = new Alerta(user);
-
+                    alerta.Owner = this;
                     alerta.Show();
                     this.Hide();
 
@@ -79,11 +80,9 @@ namespace ProyectoEntregar
             ConfiguracionDatos.LeerXML();
             usuarios.FontWeight = FontWeights.Bold;
 
-            using (var db = new SQLiteConnection("database.db3"))
-            {
-                string query = "SELECT DISTINCT * FROM Relaciones where User=@user ";
+           
                 string hab = "A";
-                var result = db.Query<Relaciones>(query, user);
+            var result = Logica.Logica.Instanci.Listar(user);
                 List<string> aux = new List<string>();
 
                 for (int i = 0; i < result.Count; i++)
@@ -115,7 +114,7 @@ namespace ProyectoEntregar
 
 
 
-            }
+            
 
 
 
@@ -239,10 +238,7 @@ namespace ProyectoEntregar
         private List<Relaciones> ObtenerDispositivosDeBaseDeDatos(string nombreHabitacion)
         {
 
-            var db = new SQLiteConnection("database.db3");
-
-            string query = "SELECT * FROM Relaciones WHERE User = ? AND NombreHabitacion = ?";
-            var result = db.Query<Relaciones>(query, user, nombreHabitacion);
+            var result = Logica.Logica.Instanci.Listar(user,nombreHabitacion);
             return result;
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -252,7 +248,7 @@ namespace ProyectoEntregar
                 if (!alertaMostrada2)
                 {
                     AlertaDispositivo alert = new AlertaDispositivo(user, nombreHabitacion);
-
+                    alert.Owner = this;
                     alert.Show();
                     this.Hide();
 
@@ -276,8 +272,7 @@ namespace ProyectoEntregar
             }
             else
             {
-                Window1 w1 = new Window1();
-                w1.Show();
+                this.Owner.Show();
             }
         }
 
